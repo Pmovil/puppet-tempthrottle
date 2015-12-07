@@ -50,7 +50,7 @@ class tempthrottle {
             group => root,
             mode  => '0644',
             ensure => present,
-	          source => "files/temp-throttle/etc/temp-throttle.conf",
+	          source => "puppet:///tempthrottle/temp-throttle/etc/temp-throttle.conf",
   }
   
   if($::operatingsystem == 'CentOS'){
@@ -60,7 +60,7 @@ class tempthrottle {
 	            group => root,
 	            mode  => '0644',
 	            ensure => present,
-	            source => "files/temp-throttle/usr/lib/systemd/system/temp-throttle.service",
+	            source => "puppet:///tempthrottle/temp-throttle/usr/lib/systemd/system/temp-throttle.service",
 	  }
 	  
 	  service { 'temp-throttle':
