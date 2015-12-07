@@ -24,10 +24,17 @@ Under the hood it uses a fork from https://github.com/Sepero/temp-throttle
 ## Setup
 
 ### What tempthrottle affects
+It creates a new SystemD service that monitors the temp-throttle script
 
-
-### Setup Requirements **OPTIONAL**
-
+### Setup Requirements
+under files you must clone our temp-throttle fork:
+```
+cd files && git clone https://github.com/Pmovil/temp-throttle.git
+```
+then switch to the "testing" branch
+```
+cd temp-throttle && git checkout testing
+```
 
 ### Beginning with tempthrottle
 
