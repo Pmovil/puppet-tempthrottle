@@ -1,0 +1,14 @@
+{
+  "name": "fabricio/tempthrottle",
+  "version": "0.1.0",
+  "author": "fabricio",
+  "summary": "Controls cpu frequency in order to avoid overheating",
+  "license": "GNU GPL 2.0",
+  "source": "https://github.com/Pmovil/temp-throttle/tree/testing",
+  "project_page": "https://github.com/Pmovil/temp-throttle/tree/testing",
+  "issues_url": "https://github.com/Pmovil/temp-throttle/tree/testing/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ]
+}
+
