@@ -68,7 +68,11 @@ class tempthrottle {
 	    enable     => true,
 	    hasstatus  => true,
 	    hasrestart => true,
-	    require    => File['/usr/lib/systemd/system/temp-throttle.service'],
+	    require    => [
+  	    File['/usr/sbin/temp-throttle'],
+        File['/etc/temp-throttle.conf'],
+        File['/usr/lib/systemd/system/temp-throttle.service'],
+	    ],
 	  }
   } # TODO - fedora 14 SysV script ?
 }
