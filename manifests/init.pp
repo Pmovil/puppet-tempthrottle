@@ -36,8 +36,8 @@
 # Copyright 2015 Your name here, unless otherwise noted.
 #
 class tempthrottle(
-  $maxtemp = 75,
-  $temperaturefile = '/sys/class/hwmon/hwmon1/device/temp1_input'
+  $maxtemp = 80,
+  $temperaturefile = ''
 ){
   # main script
   file { '/usr/sbin/temp-throttle':
@@ -48,7 +48,8 @@ class tempthrottle(
             source => "puppet:///extra_files/tempthrottle/temp-throttle/usr/sbin/temp-throttle",
   }
   $str = "MAX_TEMP=$maxtemp
-          TEMPERATURE_FILE=\"$temperaturefile\""
+TEMPERATURE_FILE=\"$temperaturefile\"
+"
 
   file { "/etc/temp-throttle.conf":
           owner => root,
@@ -78,6 +79,7 @@ class tempthrottle(
         File['/etc/temp-throttle.conf'],
         File['/usr/lib/systemd/system/temp-throttle.service'],
 	    ],
+	    subscribe  => File['/etc/temp-throttle.conf']
 	  }
   } # TODO - fedora 14 SysV script ?
 }
