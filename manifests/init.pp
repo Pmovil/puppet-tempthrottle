@@ -35,7 +35,10 @@
 #
 # Copyright 2015 Your name here, unless otherwise noted.
 #
-class tempthrottle {
+class tempthrottle(
+  $maxtemp = 75,
+  $temperaturefile = '/sys/class/hwmon/hwmon1/device/temp1_input'
+){
   # main script
   file { '/usr/sbin/temp-throttle':
             owner => root,
@@ -44,13 +47,15 @@ class tempthrottle {
             ensure => present,
             source => "puppet:///extra_files/tempthrottle/temp-throttle/usr/sbin/temp-throttle",
   }
-  # config file
-	file { '/etc/temp-throttle.conf':
-	          owner => root,
-            group => root,
-            mode  => '0644',
-            ensure => present,
-	          source => "puppet:///extra_files/tempthrottle/temp-throttle/etc/temp-throttle.conf",
+  $str = "MAX_TEMP=$maxtemp
+          TEMPERATURE_FILE=\"$temperaturefile\""
+
+  file { "/etc/temp-throttle.conf":
+          owner => root,
+          group => root,
+          mode  => '0644',
+          ensure => present,
+          content => "$str",
   }
   
   if($::operatingsystem == 'CentOS'){
