@@ -42,7 +42,7 @@ class tempthrottle {
             group => root,
             mode  => '0755',
             ensure => present,
-            source => "puppet:///tempthrottle/temp-throttle/usr/sbin/temp-throttle",
+            source => "puppet:///extra_files/tempthrottle/temp-throttle/usr/sbin/temp-throttle",
   }
   # config file
 	file { '/etc/temp-throttle.conf':
@@ -50,7 +50,7 @@ class tempthrottle {
             group => root,
             mode  => '0644',
             ensure => present,
-	          source => "puppet:///tempthrottle/temp-throttle/etc/temp-throttle.conf",
+	          source => "puppet:///extra_files/tempthrottle/temp-throttle/etc/temp-throttle.conf",
   }
   
   if($::operatingsystem == 'CentOS'){
@@ -60,7 +60,7 @@ class tempthrottle {
 	            group => root,
 	            mode  => '0644',
 	            ensure => present,
-	            source => "puppet:///tempthrottle/temp-throttle/usr/lib/systemd/system/temp-throttle.service",
+	            source => "puppet:///extra_files/tempthrottle/temp-throttle/usr/lib/systemd/system/temp-throttle.service",
 	  }
 	  
 	  service { 'temp-throttle':

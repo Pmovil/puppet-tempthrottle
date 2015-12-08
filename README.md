@@ -27,13 +27,9 @@ Under the hood it uses a fork from https://github.com/Sepero/temp-throttle
 It creates a new SystemD service that monitors the temp-throttle script
 
 ### Setup Requirements
-under files you must clone our temp-throttle fork:
+In your puppet path you must clone our temp-throttle fork:
 ```
-cd files && git clone https://github.com/Pmovil/temp-throttle.git
-```
-then switch to the "testing" branch
-```
-cd temp-throttle && git checkout testing
+cd files && mkdir tempthrottle && cd tempthrottle && git clone https://github.com/Pmovil/temp-throttle.git && cd temp-throttle && git checkout testing
 ```
 
 ### Beginning with tempthrottle
